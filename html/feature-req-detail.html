@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Votato - Feature Request</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+    <div class="flex flex-col min-h-screen">
+        <header
+            class="bg-white dark:bg-background-dark/50 border-b border-gray-200 dark:border-gray-800 backdrop-blur-sm sticky top-0 z-10">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center gap-4">
+                        <div class="text-primary size-6">
+                            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path>
+                            </svg>
+                        </div>
+                        <h1 class="text-xl font-bold text-gray-900 dark:text-white">Votato</h1>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button
+                            class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-200">
+                            <span class="material-symbols-outlined">
+                                notifications
+                            </span>
+                        </button>
+                        <div class="size-10 rounded-full bg-cover bg-center"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDACKjCefhRFiUBUxT4UNojF3JFWqlYjDkQGmvZjR98QDNWqqX51C00WDI-eIZpZGbN4n8T00_sTyDCsQf72u7zn5tCWkasnywARjtvZbTW4sVPFWIgppGCSsNDsQF-nFcEcuKWTW_cvYKr_h1NX4QqtlWEURpOaw7nfml-AYoc62r4WG_-EF0z2E9NRznEl3yYk9NQwnWtvAJMfJFNpMkyRGL1mKCUSaPNc_Ch9CgzlEsSXp5mln4-dn168Gqpgx1kJhn4-udJi5P5");'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8 flex justify-between items-center">
+                    <a class="flex items-center gap-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined">
+                            arrow_back
+                        </span>
+                        Back to Home
+                    </a>
+                    <button
+                        class="flex items-center gap-2 text-sm font-medium text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-colors">
+                        <span class="material-symbols-outlined">delete</span>
+                        Delete
+                    </button>
+                </div>
+                <div
+                    class="bg-white dark:bg-background-dark/50 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-8">
+                        <div
+                            class="flex flex-col items-center gap-2 bg-background-light dark:bg-background-dark rounded-lg p-3 border border-gray-200 dark:border-gray-800">
+                            <button
+                                class="p-2 rounded-full text-gray-600 dark:text-gray-400 hover:bg-primary/20 hover:text-primary">
+                                <span class="material-symbols-outlined">
+                                    keyboard_arrow_up
+                                </span>
+                            </button>
+                            <span class="font-bold text-lg text-gray-900 dark:text-white">125</span>
+                            <button
+                                class="p-2 rounded-full text-gray-600 dark:text-gray-400 hover:bg-primary/20 hover:text-primary">
+                                <span class="material-symbols-outlined">
+                                    keyboard_arrow_down
+                                </span>
+                            </button>
+                        </div>
+                        <div class="flex-1">
+                            <h2 class="text-3xl font-bold text-gray-900 dark:text-white tracking-tight">Implement Dark
+                                Mode</h2>
+                            <p class="mt-3 text-base text-gray-600 dark:text-gray-300">
+                                Many users have requested a dark mode option for the application. This feature would
+                                improve user experience, especially for those who prefer working in low-light
+                                environments or have sensitivity to bright screens.
+                            </p>
+                            <div
+                                class="mt-6 border-t border-gray-200 dark:border-gray-800 pt-4 flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+                                <span>Created on <time datetime="2024-01-15">January 15, 2024</time></span>
+                                <span>by <span class="font-medium text-gray-700 dark:text-gray-200">Olivia
+                                        Bennett</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>

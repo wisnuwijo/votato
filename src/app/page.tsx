@@ -1,103 +1,83 @@
-import Image from "next/image";
+"use client";
+
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const router = useRouter();
+  const featureRequests = [
+    { id: 1, title: "Add dark mode", votes: 12 },
+    { id: 2, title: "Improve search functionality", votes: 8 },
+    { id: 3, title: "Integrate with other platforms", votes: 5 },
+    { id: 4, title: "Mobile app support", votes: 3 },
+    { id: 5, title: "Add user profiles", votes: 1 },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="flex flex-col min-h-screen bg-[#f6f7f8] text-slate-800">
+      <header className="bg-white/50 border-b border-slate-200/80 backdrop-blur-sm sticky top-0 z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center gap-4">
+              <div className="text-[#137fec] w-7 h-7">
+                <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+                </svg>
+              </div>
+              <h1 className="text-lg font-bold text-slate-900">Feature Requests</h1>
+            </div>
+            <div className="flex items-center">
+              <div
+                className="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10"
+                style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuA1G7oWojYXM0nION8aOjtrgFFKgnDWas5SIXyU0TWCYsCd70d7p6_MaZXBLHhIZI1_OXdPiqw7VPNkCIQJnjD2xx7qztCCAL2V4nyG4PTL8XpxaJNA-ul1fNyLhEuZEhajhF078fHtkw5z_p5DK55f6kvrR5YCEpFPUGvcTFX-7YSe0_JZVJfch6EzynlyOvlVsBsE0laMA8lHtC3Cq4rQhTUQypuNeS7OcoAwR1DAY5dxZqWxPJfVTKBGXpG3xZlNjORznocse1J4")'}}
+              ></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-8">
+            Feature Requests
+          </h2>
+          <div className="space-y-4">
+            {featureRequests.map((request) => (
+              <div
+                key={request.id}
+                onClick={() => router.push('/16867206943035763044')}
+                className="bg-white rounded-lg shadow-sm p-4 flex items-center justify-between cursor-pointer hover:shadow-md transition-shadow"
+              >
+                <div className="flex-grow">
+                  <h3 className="text-base font-medium text-slate-900">
+                    {request.title}
+                  </h3>
+                  <p className="text-sm text-slate-500">
+                    {request.votes} {request.votes === 1 ? 'vote' : 'votes'}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors">
+                    <span className="material-symbols-outlined text-lg">arrow_drop_up</span>
+                  </button>
+                  <span className="font-semibold text-slate-800 text-sm w-6 text-center">
+                    {request.votes}
+                  </span>
+                  <button className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors">
+                    <span className="material-symbols-outlined text-lg">arrow_drop_down</span>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      <button
+        onClick={() => router.push('/create')}
+        className="fixed bottom-8 right-8 bg-[#137fec] text-white rounded-full p-4 shadow-lg hover:bg-blue-600 transition-colors flex items-center justify-center cursor-pointer"
+      >
+        <span className="material-symbols-outlined text-3xl">add</span>
+      </button>
     </div>
   );
 }
