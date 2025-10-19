@@ -1,0 +1,1 @@
+export const AUTH_CHECK_URL = 'https://api.tap.dygdaya.com/v1/auth/check';

@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Votato
+
+A Next.js application for managing feature requests and voting.
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Database Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project uses Knex.js for database migrations with Supabase PostgreSQL.
 
-## Learn More
+### Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+Create a `.env.local` file in the root directory with your Supabase connection string:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+SUPABASE_DB_URL=your_supabase_connection_string
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Migration Commands
 
-## Deploy on Vercel
+**Create a new migration:**
+```bash
+npm run migrate:make <migration_name>
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Example:
+```bash
+npm run migrate:make create_users_table
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Run all pending migrations:**
+```bash
+npm run migrate:latest
+```
+
+**Rollback the last batch of migrations:**
+```bash
+npm run migrate:rollback
+```
+
+**Check migration status:**
+```bash
+npm run knex -- migrate:status
+```
+
+### Migration Files
+
+Migration files are located in the `./migrations` directory and use TypeScript.
+
+Example migration structure:
+
+```typescript
+import type { Knex } from "knex";
+
+export async function up(knex: Knex): Promise<void> {
+  return knex.schema.createTable('table_name', (table) => {
+    table.increments('id').primary();
+    table.string('name').notNullable();
+    table.timestamps(true, true);
+  });
+}
+
+export async function down(knex: Knex): Promise<void> {
+  return knex.schema.dropTable('table_name');
+}
+```
+
+### Configuration
+
+The database configuration is in [knexfile.ts](knexfile.ts). It uses CommonJS exports to be compatible with the Knex CLI.
+
+**Note:** When running Knex commands directly (not through npm scripts), you need to set the TypeScript compiler options:
+
+```bash
+TS_NODE_COMPILER_OPTIONS='{"module":"commonjs"}' npx knex <command>
+```
+
+However, it's recommended to use the npm scripts instead for convenience.
+
+## Tech Stack
+
+- **Framework:** Next.js 15 with Turbopack
+- **Language:** TypeScript
+- **Database:** Supabase (PostgreSQL)
+- **Migration Tool:** Knex.js
+- **Styling:** Tailwind CSS
+- **UI Library:** React 19
