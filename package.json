@@ -16,6 +16,7 @@
     "knex": "^3.1.0",
     "next": "15.5.5",
     "pg": "^8.16.3",
+    "pg-query-stream": "^4.10.3",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
@@ -32,6 +33,7 @@
     "eslint-config-next": "15.5.5",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "webpack": "^5.102.1"
   }
 }

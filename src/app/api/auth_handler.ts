@@ -1,5 +1,3 @@
-import { AUTH_CHECK_URL } from './config';
-
 // Type definitions for the API response
 export interface User {
   ID: number;
@@ -27,6 +25,9 @@ export interface AuthCheckResponse {
   data: AuthCheckData;
   success: boolean;
 }
+
+// Get AUTH_CHECK_URL from environment variables
+const AUTH_CHECK_URL = process.env.AUTH_CHECK_URL || '';
 
 /**
  * Check if the provided authentication token is valid
